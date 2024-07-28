@@ -1,0 +1,219 @@
+   why we need oop's?
+--> * it make code readable 
+    * easy to understand 
+    * make code reuseable 
+    * it make Dry code (don't repeat your code) 
+    * also Expand code(inhance features, udates)
+
+oop's (object oriented programming system(set of rule))
+ CLASS --> virtual entity (category). Implementing the blue print of the code
+           syntax:- Class Myclass{
+                            -Public static void main
+                            -data mamber
+                            -member function  
+                    }
+ OBJECT--> real life entity
+
+pilers of opps
+1] Encapsulation --- wraping of data in sangle unit. class is a unit and the variable and methods are the data which we wrap using class.
+                      it is also use to secutrity also(hiding data)
+                      example:-
+                           Class Employee{
+                                    private int empid=2;
+                                   int basesal=20000;
+                                   int incentive=200;
+                                   void countsalaries(){
+                                             System.out.println(basesal+incentive);
+                                    }
+                                    int getempid(){
+                                              return empid;
+                                        }
+                               }
+                              Class Test{
+                                     Public static void main(String[] args){
+                                                  // Employee ep = new Employee(); 
+                                                   System.out.println(Employee.getempid);
+                                                   ep.countsalaries();
+                                     }
+                              }
+
+Static --> allocate global memory . we use static keyword to declering globle variable.
+
+Access Modifier ---> Public (class,package,subclass,global)  ,  private (class)  ,  Portected (class,package,subclass)  ,  default (class,package)
+getter-->  To retrieve the value of a private field from outside the class.
+          int getph(){
+                 return ph;
+             }
+           string getname(){
+                  return name;
+           }
+
+setter-->  To set or update the value of a private field from outside the class.
+            void setph(){
+                      ph= phone;
+            }
+
+
+Constructor--> 1]default
+                   Employee(){
+                         this.ph=phoneNo;
+                         this.name=empName;
+                   }
+
+               2]parameterized
+                    Employee(String empName,int Phoneno){
+                         this.ph=phoneNo;
+                         this.name=empName;
+                   }
+
+               3]copy
+                      public class Person {
+                                 private String name;
+                                  private int age;
+
+                                   // Copy Constructor
+                        public Person(Person other) {
+                                   this.name = other.name;
+                                   this.age = other.age;
+                              }
+                           }
+
+               4]Static
+                      public class Person {
+                          public static int count;
+
+                      // Static Constructor
+                        static Person() {
+                             count = 0;
+                          }
+                       }
+
+               5]non argument
+               6]private
+                       public class Singleton {
+                                private static Singleton instance;
+
+                                // Private Constructor
+                                 private Singleton() { }
+ 
+                        public static Singleton getInstance() {
+                                    if (instance == null) {
+                                    instance = new Singleton();
+                                   }
+                             return instance;
+                             }
+                          }
+
+2] abstraction --- it is the process in we hide background implamentation and provide essential details only 
+                   we achive abstraction using two ways 1] abstract method ----->
+                   Example:-
+                           public abstract class bank{
+                                        String name;
+                                        abstract void readData();
+                                        abstract void writeData();
+                           }
+                                                        2] interface(blue print) ----> we achive 100% of abstraction using it
+3] inheritance ---  allows one class (called a child or subclass) to inherit attributes and methods from another class (called a parent or superclass).
+                      1] single level
+                      2] multi level
+                      3] multiple (not in java)
+                      4] hierarchical
+                      5] hybrid
+4] polymorphism --- The word polymorphism means having many forms. Polymorphism allows us to perform a single action in different ways. In other words, polymorphism allows you to define one interface and have multiple implementations. 
+                      1] Compile-time Polymorphism --> It is also known as static polymorphism. This type of polymorphism is achieved by function overloading or operator overloading. 
+                            example:-
+                                  // Java Program to Illustrate Run-time polymorphism
+                                  
+                                  // Importing required classes
+                                  import java.io.*;
+                                  import java.util.*;
+                                  
+                                  // Class 1
+                                  // Helper class
+                                  class First {
+                                  
+                                  	// Method of this class
+                                  	// Without any parameter
+                                  	void check()
+                                  	{
+                                  
+                                  		// Print statement if this method is called
+                                  		System.out.println("This is the class First");
+                                  	}
+                                  }
+                                  
+                                  // Class 2
+                                  // Main class
+                                  class Second extends First {
+                                  
+                                  	// Method overloading
+                                  	void check(String name)
+                                  	{
+                                  		// Printing the name of the class method having the
+                                  		// parameter
+                                  		System.out.println("This is the class " + name);
+                                  	}
+                                  
+                                  	// Method 2
+                                  	// Main driver method
+                                  	public static void main(String args[])
+                                  	{
+                                  		// Creating object of class 2
+                                  		Second ob = new Second();
+                                  		// Calling method over class 2 object
+                                  		ob.check("Second");
+                                  
+                                  		// Creating object of class 1
+                                  		First ob1 = new First();
+                                  		ob.check();
+                                  
+                                  		// Upcasting
+                                  		First ob2 = new Second();
+                                  		ob.check();
+                                  	}
+                                  }
+
+                      2] Runtime Polymorphism --> This type of polymorphism is resolved by the java virtual machine, not by the java compiler. That’s why this type of polymorphism is called run-time polymorphism. Run time polymorphism occurs during method overriding in java.
+                             example:-
+                                      
+                                      // Java Program to Illustrate Run-time polymorphism
+                                       
+                                      // Importing I/O classes
+                                      import java.io.*;
+                                       
+                                      // Class 1 (Parent class)
+                                      class GFG1 {
+                                        //name method
+                                        void name() {
+                                          System.out.println("This is the GFG1 class");
+                                        }
+                                      }
+                                       
+                                      // Class 2 (Child class)
+                                      // Main class extending parent class
+                                      public class GFG extends GFG1 {
+                                       
+                                        // Method 1
+                                        void name() {
+                                          // Print statement
+                                          System.out.println("This is the GFG class");
+                                        }
+                                       
+                                        // Method 2
+                                        // Main drive method
+                                        public static void main(String[] args) {
+                                       
+                                          // Now creating 2 objects with different references and
+                                          // calling the Method 1 over the objects
+                                       
+                                          // Case 1: GFG1 reference and GFG1 is the object
+                                          GFG1 ob = new GFG1();
+                                          ob.name();
+                                       
+                                          // Case 2: GFG1 reference and GFG is the object
+                                          GFG1 ob1 = new GFG();
+                                          ob1.name();
+                                        }
+                                      }
+
+
